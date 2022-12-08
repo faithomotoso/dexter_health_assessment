@@ -14,9 +14,3 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
-
-
-### Explanation Text
-Current implementation to know an active shift would be better automated using firebase functions as using the devices' time can cause errors
-
-Filtering firebase queries with the `reference` type. Had to be done manually.
