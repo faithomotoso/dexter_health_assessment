@@ -13,9 +13,11 @@ void showTaskMoverDialog(BuildContext context, Task task) {
       context: context,
       builder: (ctx) {
         return Center(
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.35,
-            width: double.maxFinite,
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxHeight: MediaQuery.of(context).size.height * 0.35,
+              minWidth: double.maxFinite
+            ),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Material(
@@ -39,6 +41,7 @@ class TaskMoverDialog extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10).copyWith(top: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           MiniHeading(heading: "Select a shift to move this task to"),
           Selector<NurseViewModel, Set<Shift>>(

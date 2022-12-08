@@ -160,6 +160,7 @@ class _AddTaskState extends State<AddTask> {
                         filled: true,
                         border: InputBorder.none,
                       ),
+                      textCapitalization: TextCapitalization.sentences,
                     ),
                   )
                 ],
