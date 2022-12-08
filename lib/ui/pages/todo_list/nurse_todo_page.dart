@@ -113,7 +113,8 @@ class _NurseTodoPageState extends State<NurseTodoPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                              "Your current shift ends on ${AppDateUtils.formatDate(date: activeShift.endTime)}"),
+                              "Here are your tasks today.\nYour current shift ends on ${AppDateUtils.formatDate(date: activeShift.endTime)}"),
+                          const SizedBox(height: 10,),
                           Expanded(
                             child: StreamBuilder<QuerySnapshot>(
                               stream: _tasksStream,

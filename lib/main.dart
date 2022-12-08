@@ -1,7 +1,7 @@
 import 'package:dexter_health_assessment/core/view_models/add_task_view_model.dart';
 import 'package:dexter_health_assessment/core/view_models/nurse_todo_view_model.dart';
-import 'package:dexter_health_assessment/core/view_models/nurses_view_model.dart';
 import 'package:dexter_health_assessment/core/view_models/residents_view_model.dart';
+import 'package:dexter_health_assessment/core/view_models/task_mover_view_model.dart';
 import 'package:dexter_health_assessment/ui/pages/todo_list/nurse_todo_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,7 +21,8 @@ void main() async {
       ChangeNotifierProvider(create: (_) => NurseViewModel()),
       ChangeNotifierProvider(create: (_) => NurseTodoViewModel()),
       ChangeNotifierProvider(create: (_) => AddTaskViewModel()),
-      ChangeNotifierProvider(create: (_) => ResidentsViewModel())
+      ChangeNotifierProvider(create: (_) => ResidentsViewModel()),
+      ChangeNotifierProvider(create: (_) => TaskMover())
     ],
     child: const MyApp(),
   ));
