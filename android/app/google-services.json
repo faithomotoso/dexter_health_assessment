@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "493305716228",
+    "project_id": "dexter-health-assessment",
+    "storage_bucket": "dexter-health-assessment.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:493305716228:android:a7dcbca11d58b120545f51",
+        "android_client_info": {
+          "package_name": "com.dexter.dexter_health_assessment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "493305716228-j6nt98cpruami1kbirq6gn4p8gi1p49a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBB8Rvsb0Rf-QEsj4WJIwOyvofCtem-h-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "493305716228-j6nt98cpruami1kbirq6gn4p8gi1p49a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
