@@ -35,6 +35,11 @@ class _NurseTodoPageState extends State<NurseTodoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        tooltip: "Add task",
+        child: const Icon(Icons.add),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -68,10 +73,8 @@ class _NurseTodoPageState extends State<NurseTodoPage> {
                     }
 
                     if (snapshot.hasData) {
-                      List<Shift> shifts = List<Shift>.from(snapshot
-                          .data!.docs
-                          .map((e) =>
-                              Shift.fromDocumentSnapshot(document: e))
+                      List<Shift> shifts = List<Shift>.from(snapshot.data!.docs
+                          .map((e) => Shift.fromDocumentSnapshot(document: e))
                           .where((element) =>
                               element.nurseId == "users/${user.documentId}"));
 
