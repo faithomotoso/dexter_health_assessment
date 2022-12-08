@@ -2,12 +2,10 @@ import 'dart:async';
 import 'dart:collection';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dexter_health_assessment/core/models/user.dart';
-import 'package:dexter_health_assessment/services/repository/nurses_repository.dart';
 import 'package:flutter/foundation.dart';
 
 class NursesViewModel extends ChangeNotifier {
 
-  final NursesRepository _nursesRepository = NursesRepository();
   late StreamSubscription<QuerySnapshot> _nursesSubscription;
   final Set<User> _users = HashSet();
 

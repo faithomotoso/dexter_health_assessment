@@ -2,9 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dexter_health_assessment/core/models/shift.dart';
 import 'package:dexter_health_assessment/core/models/task.dart';
 import 'package:dexter_health_assessment/core/models/user.dart';
+import 'package:dexter_health_assessment/core/view_models/nurse_view_model.dart';
+import 'package:dexter_health_assessment/ui/pages/add_task/add_task_page.dart';
 import 'package:dexter_health_assessment/ui/widgets/task_widget.dart';
 import 'package:dexter_health_assessment/utils/date_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class NurseTodoPage extends StatefulWidget {
   static const String routeName = "/todo";
@@ -36,7 +39,9 @@ class _NurseTodoPageState extends State<NurseTodoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showAddTask(context);
+        },
         tooltip: "Add task",
         child: const Icon(Icons.add),
       ),
@@ -78,8 +83,10 @@ class _NurseTodoPageState extends State<NurseTodoPage> {
                           .where((element) =>
                               element.nurseId == "users/${user.documentId}"));
 
-                      shifts.sort(
-                          (s1, s2) => s1.startTime.compareTo(s2.startTime));
+                      Provider.of<NurseViewModel>(context, listen: false)
+                          .assignShifts(shifts: shifts, notify: false);
+                      // shifts.sort(`
+                      //     (s1, s2) => s1.startTime.compareTo(s2.startTime));`
 
                       if (shifts.isEmpty) {
                         return const Center(

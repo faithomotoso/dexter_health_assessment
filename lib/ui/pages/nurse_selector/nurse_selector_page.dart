@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dexter_health_assessment/core/models/user.dart';
+import 'package:dexter_health_assessment/core/view_models/nurse_view_model.dart';
 import 'package:dexter_health_assessment/main.dart';
 import 'package:dexter_health_assessment/ui/pages/todo_list/nurse_todo_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class NurseSelectorPage extends StatefulWidget {
   const NurseSelectorPage({Key? key}) : super(key: key);
@@ -54,6 +56,8 @@ class _NurseSelectorPageState extends State<NurseSelectorPage> {
                   title: Text("${user.firstName} ${user.lastName}"),
                   leading: const Icon(Icons.person),
                   onTap: () {
+                    Provider.of<NurseViewModel>(ctx, listen: false)
+                        .assignUser(user: user);
                     navigatorKey.currentState!
                         .pushNamed(NurseTodoPage.routeName, arguments: user);
                   },

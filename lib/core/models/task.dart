@@ -7,8 +7,8 @@ class Task {
   late final DocumentReference _shiftRef;
   late final DocumentReference _residentRef;
   late final DocumentReference _nurseRef;
-  late final String? _dueDate;
-  late final String? _completedDate;
+  String? _dueDate;
+  String? _completedDate;
   late final bool _completed;
   late final String _action;
 
@@ -34,9 +34,11 @@ class Task {
     this._shiftRef = data["shift_id"] as DocumentReference;
     this._residentRef = data["resident_id"] as DocumentReference;
     this._nurseRef = data["nurse_id"] as DocumentReference;
-    this._dueDate = (data["due_date"] as String).isEmpty
-        ? null
-        : data["due_date"] as String;
+    if (data.containsKey("due_date")) {
+      this._dueDate = (data["due_date"] as String).isEmpty
+          ? null
+          : data["due_date"] as String;
+    }
     this._completed = (data["completed"] as bool);
 
     var cDate = data["completed_date"];
