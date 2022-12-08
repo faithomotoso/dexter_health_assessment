@@ -43,7 +43,7 @@ class Task {
 
     var cDate = data["completed_date"];
     if (cDate is Timestamp) {
-      this._completedDate = cDate.toString();
+      this._completedDate = cDate.toDate().toString();
     }
 
     this._action = data["action"] as String;

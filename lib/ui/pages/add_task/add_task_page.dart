@@ -85,11 +85,14 @@ class _AddTaskState extends State<AddTask> {
                             hint: const Text("Select a shift"),
                             items: List<
                                 DropdownMenuItem<
-                                    Shift>>.from(nurseViewModel!.shifts.map(
-                                (s) => DropdownMenuItem<Shift>(
+                                    Shift>>.from(nurseViewModel!.shifts
+                                .where(
+                                    (s) => s.isActiveShift || s.isFutureShift)
+                                .map((s) => DropdownMenuItem<Shift>(
                                     value: s,
-                                    child: Text(
-                                        "Shift starting ${AppDateUtils.formatDate(date: s.startTime)}")))),
+                                    child: Text(s.isActiveShift
+                                        ? "Current shift"
+                                        : "Shift starting ${AppDateUtils.formatDate(date: s.startTime)}")))),
                           ),
                         ));
                       },
@@ -168,9 +171,9 @@ class _AddTaskState extends State<AddTask> {
                     if (formKey.currentState!.validate()) {
                       addTaskViewModel!.createTask(
                           taskDescription: taskDescriptionController.text,
-                          nurse:
-                              Provider.of<NurseViewModel>(context, listen: false)
-                                  .user!);
+                          nurse: Provider.of<NurseViewModel>(context,
+                                  listen: false)
+                              .user!);
                     }
                   },
                   child: const Text("Create task"),

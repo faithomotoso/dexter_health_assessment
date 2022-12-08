@@ -27,11 +27,14 @@ class Shift {
   // Determines if the shift is currently active
   bool get isActiveShift {
     DateTime now = DateTime.now().toUtc();
-    if (now.isAfter(startTime) && now.isBefore(endTime)) {
-      return true;
-    }
-    return false;
+    return now.isAfter(startTime) && now.isBefore(endTime);
   }
+
+  // Determine if a shift is to happen in the future
+  bool get isFutureShift {
+    DateTime now = DateTime.now();
+    return !isActiveShift && startTime.toUtc().isAfter(now);
+}
 
   @override
   bool operator ==(Object other) {

@@ -1,7 +1,9 @@
 import 'dart:collection';
+import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dexter_health_assessment/core/models/shift.dart';
+import 'package:dexter_health_assessment/main.dart';
 import 'package:dexter_health_assessment/utils/snackbar_messages.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -35,6 +37,8 @@ class AddTaskViewModel extends ChangeNotifier {
       return;
     }
 
+    bool success = false;
+
     await FirebaseFirestore.instance.collection("tasks").add({
       "action": taskDescription,
       "nurse_id": FirebaseFirestore.instance.doc("nurses/${nurse.documentId}"),
@@ -44,7 +48,17 @@ class AddTaskViewModel extends ChangeNotifier {
       "shift_id": FirebaseFirestore.instance
           .doc("shifts/${_selectedShift!.documentId}"),
       "completed": false
+    }).then((value) => success = true, onError: (e) {
+      log("Error creating new task $e");
     });
+
+    if (success) {
+      showSuccessMessage(message: "Task created successfully!");
+      navigatorKey.currentState!.pop();
+      clear();
+    } else {
+      showErrorMessage(message: "Error creating new task");
+    }
   }
 
   void clear() {
