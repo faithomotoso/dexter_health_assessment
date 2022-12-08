@@ -27,7 +27,7 @@ class Shift {
   // Determines if the shift is currently active
   bool get isActiveShift {
     DateTime now = DateTime.now().toUtc();
-    if (startTime.toUtc().isAfter(now) && now.isBefore(endTime)) {
+    if (now.isAfter(startTime) && now.isBefore(endTime)) {
       return true;
     }
     return false;

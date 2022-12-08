@@ -1,3 +1,4 @@
+import 'package:dexter_health_assessment/core/view_models/nurse_todo_view_model.dart';
 import 'package:dexter_health_assessment/core/view_models/nurses_view_model.dart';
 import 'package:dexter_health_assessment/ui/pages/todo_list/nurse_todo_page.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ void main() async {
 
   runApp(MultiProvider(
     providers: [
-      ChangeNotifierProvider(create: (_) => NursesViewModel()),
+      ChangeNotifierProvider(create: (_) => NurseTodoViewModel()),
     ],
     child: const MyApp(),
   ));

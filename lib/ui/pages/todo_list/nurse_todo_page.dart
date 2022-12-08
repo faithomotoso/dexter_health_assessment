@@ -44,7 +44,7 @@ class _NurseTodoPageState extends State<NurseTodoPage> {
             children: [
               const BackButton(),
               Text(
-                "Hi Nurse ${user.firstName} ${user.documentId}",
+                "Hi Nurse ${user.firstName}",
                 style: Theme.of(context).textTheme.headline5,
               ),
               const SizedBox(
@@ -69,9 +69,9 @@ class _NurseTodoPageState extends State<NurseTodoPage> {
 
                     if (snapshot.hasData) {
                       List<Shift> shifts = List<Shift>.from(snapshot
-                          .data!.docChanges
+                          .data!.docs
                           .map((e) =>
-                              Shift.fromDocumentSnapshot(document: e.doc))
+                              Shift.fromDocumentSnapshot(document: e))
                           .where((element) =>
                               element.nurseId == "users/${user.documentId}"));
 
@@ -124,9 +124,9 @@ class _NurseTodoPageState extends State<NurseTodoPage> {
 
                                 if (snapshot.hasData) {
                                   List<Task> tasks = List<Task>.from(snapshot
-                                      .data!.docChanges
+                                      .data!.docs
                                       .map((e) => Task.fromDocumentSnapshot(
-                                          document: e.doc))
+                                          document: e))
                                       .where((t) => t.belongsToShift(
                                           shiftId: activeShift.documentId)));
 
